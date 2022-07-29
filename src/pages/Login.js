@@ -77,7 +77,6 @@ class Login extends React.Component {
             >
               Entrar
             </button>
-
           </Link>
         </form>
       </div>
@@ -90,7 +89,7 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 Login.propTypes = {
-  userEmail: PropTypes.string.isRequired,
+  userEmail: PropTypes.func.isRequired,
 };
 
 export default connect(null, mapDispatchToProps)(Login);
