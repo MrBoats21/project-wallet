@@ -3,6 +3,8 @@ import getCurrencies from '../../helpers/getCurrencies';
 export const USER_EMAIL = 'USER_EMAIL';
 export const SAVE_CURRENCIES = 'SAVE_CURRENCIES';
 export const SAVE_EXPENSE = 'SAVE_EXPENSE';
+export const DELETE_EXPENSE = 'DELETE_EXPENSE';
+export const EDIT_EXPENSE = 'EDIT_EXPENSE';
 
 export const sendEmail = (email) => ({
   type: USER_EMAIL,
@@ -14,8 +16,18 @@ export const saveCoins = (payload) => ({
   payload,
 });
 
-export const saveNewExpense = (payload) => ({
+export const saveExpense = (payload) => ({
   type: SAVE_EXPENSE,
+  payload,
+});
+
+export const deleteExpense = (payload) => ({
+  type: DELETE_EXPENSE,
+  payload,
+});
+
+export const editExpense = (payload) => ({
+  type: EDIT_EXPENSE,
   payload,
 });
 
@@ -34,7 +46,7 @@ export const fetchCurrencies = () => async (dispatch) => {
 export const expense = (info) => async (dispatch) => {
   try {
     const currencies = await getCurrencies();
-    dispatch(saveNewExpense({
+    dispatch(saveExpense({
       ...info,
       exchangeRates: currencies,
     }));
